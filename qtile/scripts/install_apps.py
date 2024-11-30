@@ -24,14 +24,21 @@ def install_package(package):
     """Install a package using pacman"""
     subprocess.run(["sudo", "pacman", "-S", "--noconfirm", package])
 
-    
+
 def install_tmux():
     if not is_installed("tmux"):
         print(f"Installing TMUX")
         install_package("tmux")
     else:
         print("Installing TMUX pluging")
-        subprocess.run(["git", "clone", "https://github.com/tmux-plugins/tpm", "~/.tmux/plugins/tpm"])
+        subprocess.run(
+            [
+                "git",
+                "clone",
+                "https://github.com/tmux-plugins/tpm",
+                "~/.tmux/plugins/tpm",
+            ]
+        )
 
 
 def main():
@@ -46,6 +53,7 @@ def main():
         "github-cli",
         "python-pynvim",
         "npm",
+        "neovim",
     ]
 
     for package in packages:
@@ -54,8 +62,6 @@ def main():
             install_package(package)
         else:
             print(f"{package} is already installed. Skipping...")
-
-
 
 
 if __name__ == "__main__":

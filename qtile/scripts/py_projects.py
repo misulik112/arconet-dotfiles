@@ -9,7 +9,11 @@ def list_project_folders():
         os.makedirs(projects_folder)
         print(f"Created '{projects_folder}' folder.")
 
-    return [f for f in os.listdir(projects_folder) if os.path.isdir(os.path.join(projects_folder, f))]
+    return [
+        f
+        for f in os.listdir(projects_folder)
+        if os.path.isdir(os.path.join(projects_folder, f))
+    ]
 
 
 def select_project_folder(project_folders):
@@ -28,7 +32,9 @@ def select_project_folder(project_folders):
         if selection == len(project_folders) + 1:
             create_new_project()
         elif 1 <= selection <= len(project_folders):
-            selected_folder = os.path.join(os.path.expanduser("~/Projects"), project_folders[selection - 1])
+            selected_folder = os.path.join(
+                os.path.expanduser("~/Projects"), project_folders[selection - 1]
+            )
             print(f"Selected project: {selected_folder}")
             start_tmux_session(selected_folder)
         else:
