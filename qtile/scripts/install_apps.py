@@ -54,6 +54,8 @@ def main():
         "python-pynvim",
         "npm",
         "neovim",
+        "obsidian",
+        "syncthing",
     ]
 
     for package in packages:
